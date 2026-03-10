@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forecast Pro — Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --fp-dark-blue: #003d65;
+      --fp-blue: #0047ba;
+      --fp-teal: #00a5b5;
+      --fp-teal-dark: #008a97;
+      --fp-green: #65bc7b;
+      --fp-green-light: #e8f5ec;
+      --gray-50: #f6f6f6;
+      --gray-100: #f0f0f0;
+      --gray-200: #e8e8e8;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #2d2d2d;
+      --gray-900: #1a1a1a;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+      --shadow-xl: 0 20px 50px -10px rgba(0,0,0,0.15);
+    }
+
+    body {
+      font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    .site-header {
+      background: var(--fp-dark-blue);
+      padding: 16px 0;
+    }
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .logo span { color: var(--fp-teal); }
+    .header-nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 28px;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--white); }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(170deg, var(--fp-dark-blue) 0%, #005a8a 100%);
+      text-align: center;
+      padding: 72px 24px 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--white);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 540px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* ── TOGGLE (Annual label) ─────────────────────────── */
+    .toggle-bar {
+      text-align: center;
+      margin: -28px 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+    .toggle-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      padding: 10px 24px;
+      box-shadow: var(--shadow-md);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+    .toggle-pill .badge {
+      background: var(--fp-green-light);
+      color: #1a8a3e;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    /* ── PRICING CARDS ─────────────────────────────────── */
+    .pricing-section { padding: 0 24px 80px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 36px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+    .card.featured {
+      border: 2px solid var(--fp-teal);
+      box-shadow: var(--shadow-lg), 0 0 0 1px var(--fp-teal);
+      padding-top: 44px;
+    }
+    .card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--fp-teal);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 18px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card-tier {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--fp-teal);
+      margin-bottom: 4px;
+    }
+    .card h3 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--gray-500);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .price-block {
+      margin-bottom: 28px;
+    }
+    .price-from {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      font-weight: 400;
+      margin-bottom: 2px;
+    }
+    .price {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .price sup {
+      font-size: 1.3rem;
+      vertical-align: super;
+      font-weight: 500;
+    }
+    .price-unit {
+      font-size: 0.88rem;
+      color: var(--gray-400);
+      font-weight: 400;
+    }
+    .price-note {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-top: 6px;
+      font-weight: 400;
+    }
+    .price-note strong {
+      color: var(--gray-800);
+      font-weight: 700;
+    }
+
+    .card-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: auto;
+    }
+    .card-btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--fp-teal);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--fp-teal-dark); }
+    .btn-outline {
+      background: var(--white);
+      color: var(--fp-dark-blue);
+      border: 2px solid var(--fp-dark-blue);
+    }
+    .btn-outline:hover {
+      background: #f0f7fb;
+    }
+
+    /* ── FEATURE COMPARISON TABLE ──────────────────────── */
+    .comparison-section {
+      padding: 60px 24px 100px;
+      background: var(--gray-50);
+    }
+    .comparison-section h2 {
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .comparison-section .subtitle {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--gray-500);
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+
+    .comparison-table-wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid var(--gray-200);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .comparison-table thead th {
+      padding: 20px 16px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--gray-900);
+      border-bottom: 2px solid var(--gray-200);
+      background: var(--gray-50);
+    }
+    .comparison-table thead th:first-child {
+      text-align: left;
+      padding-left: 28px;
+      width: 40%;
+    }
+    .comparison-table thead th.highlight {
+      background: #e8f6f8;
+      color: var(--fp-dark-blue);
+    }
+
+    .comparison-table tbody td {
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      color: var(--gray-700);
+      border-bottom: 1px solid var(--gray-100);
+      text-align: center;
+    }
+    .comparison-table tbody td:first-child {
+      text-align: left;
+      padding-left: 28px;
+      font-weight: 500;
+    }
+    .comparison-table tbody td.highlight {
+      background: rgba(0,165,181,0.03);
+    }
+
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--fp-green-light);
+      border-radius: 50%;
+    }
+    .check svg { width: 14px; height: 14px; stroke: #1a8a3e; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .dash {
+      display: inline-block;
+      width: 16px;
+      height: 2px;
+      background: var(--gray-300);
+      border-radius: 2px;
+    }
+
+    .cell-text {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+
+    /* ── FAQ SECTION ────────────────────────────────────── */
+    .faq-section {
+      padding: 80px 24px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-section h2 {
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 40px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--gray-200);
+      padding: 20px 0;
+    }
+    .faq-item summary {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gray-800);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--gray-400);
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after {
+      content: '\2212';
+    }
+    .faq-item p {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── CTA BANNER ────────────────────────────────────── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--fp-dark-blue) 0%, #005a8a 100%);
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .cta-banner h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .cta-banner p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+    .cta-banner .btn-cta {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--fp-teal);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-banner .btn-cta:hover {
+      background: var(--fp-teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    .site-footer {
+      background: var(--fp-dark-blue);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.82rem;
+    }
+
+    /* ── LOGO CAROUSEL ─────────────────────────────────── */
+    .logo-carousel-section {
+      padding: 0 0 60px;
+      text-align: center;
+    }
+    .logo-carousel-section .carousel-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+    .logo-carousel {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    .logo-carousel::before,
+    .logo-carousel::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .logo-carousel::before {
+      left: 0;
+      background: linear-gradient(to right, var(--white), transparent);
+    }
+    .logo-carousel::after {
+      right: 0;
+      background: linear-gradient(to left, var(--white), transparent);
+    }
+    .logo-track {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      animation: scroll-logos 40s linear infinite;
+      width: max-content;
+    }
+    .logo-track:hover {
+      animation-play-state: paused;
+    }
+    .logo-track img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    @keyframes scroll-logos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .cards { grid-template-columns: 1fr; max-width: 420px; }
+      .card.featured { order: -1; }
+      .comparison-table thead th,
+      .comparison-table tbody td { padding: 10px 8px; font-size: 0.8rem; }
+      .comparison-table thead th:first-child,
+      .comparison-table tbody td:first-child { padding-left: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HERO ──────────────────────────────────────────── -->
+<section class="hero">
+  <h1>Forecast Pro Pricing</h1>
+  <p>Powerful demand forecasting for every team. Choose the edition that fits your needs.</p>
+</section>
+
+<!-- ─── TOGGLE ────────────────────────────────────────── -->
+<div class="toggle-bar">
+  <div class="toggle-pill">
+    Annual subscription - all editions
+    <span class="badge">Technical support included</span>
+  </div>
+</div>
+
+<!-- ─── PRICING CARDS ────────────────────────────────── -->
+<section class="pricing-section">
+  <div class="cards">
+
+    <!-- FP 100 -->
+    <div class="card">
+      <h3>Forecast Pro 100</h3>
+      <p class="card-desc">Statistical forecasting for up to 100 items per project.</p>
+      <div class="price-block">
+        <div class="price"><sup>$</sup>1,995<span class="price-unit"> / user</span></div>
+      </div>
+      <a href="https://www.forecastpro.com/demo/" class="card-btn btn-outline">Book a demo</a>
+    </div>
+
+    <!-- FP TRAC (center / featured) -->
+    <div class="card featured">
+      <h3>Forecast Pro TRAC</h3>
+      <p class="card-desc">Full demand forecasting, S&amp;OP, and accuracy tracking for teams of any size.</p>
+      <div class="price-block">
+        <div class="price-from">As low as</div>
+        <div class="price"><sup>$</sup>4,675<span class="price-unit"> / user</span></div>
+        <div class="price-note">Additional licenses as low as <strong>$1,200</strong> / user</div>
+      </div>
+      <a href="https://www.forecastpro.com/demo/" class="card-btn btn-primary">Book a demo</a>
+    </div>
+
+    <!-- FP Extended -->
+    <div class="card">
+      <h3>Forecast Pro Extended</h3>
+      <p class="card-desc">Unlimited items, advanced analytics, and reporting tools.</p>
+      <div class="price-block">
+        <div class="price-from">As low as</div>
+        <div class="price"><sup>$</sup>3,500<span class="price-unit"> / user</span></div>
+      </div>
+      <a href="https://www.forecastpro.com/demo/" class="card-btn btn-outline">Book a demo</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── LOGO CAROUSEL ────────────────────────────────── -->
+<section class="logo-carousel-section">
+  <div class="logo-carousel">
+    <div class="logo-track">
+      <img src="logos/Caterpillar-logo.jpg" alt="Caterpillar">
+      <img src="logos/Coca-Cola_logo.svg.png" alt="Coca-Cola">
+      <img src="logos/Unilever-Symbol.png" alt="Unilever">
+      <img src="logos/anheuser-busch-4-logo-png-transparent.png" alt="Anheuser-Busch">
+      <img src="logos/Eaton-Logo.png" alt="Eaton">
+      <img src="logos/Philips-logo-wordmark.png" alt="Philips">
+      <img src="logos/Thermo_Fisher_Scientific_logo.svg.png" alt="Thermo Fisher">
+      <img src="logos/Bridgestone_logo_wordmark.png" alt="Bridgestone">
+      <img src="logos/att-logo-transparent.png" alt="AT&T">
+      <img src="logos/Frito-Lay-Logo.png" alt="Frito-Lay">
+      <img src="logos/SC_Johnson_2018.svg.png" alt="SC Johnson">
+      <img src="logos/Western_Union_current_logo.svg.png" alt="Western Union">
+      <img src="logos/GSK-Logo-2000.png" alt="GSK">
+      <img src="logos/images.png" alt="iRobot">
+      <img src="logos/H_MasterLogo_Colour_POS_RGB.png" alt="Haleon">
+      <img src="logos/Dometic_-_logo.png" alt="Dometic">
+      <img src="logos/b91049c4-4f2d-4f87-9eb1-692758b85c45-1752006125496.png" alt="PopSockets">
+      <img src="logos/download.png" alt="Brooks">
+      <img src="logos/png-clipart-abbvie-logo-north-chicago-abbvie-inc-abbott-laboratories-pharmaceutical-industry-nyse-abbv-abbvie-logo-blue-angle.png" alt="AbbVie">
+      <!-- duplicate set for seamless loop -->
+      <img src="logos/Caterpillar-logo.jpg" alt="Caterpillar">
+      <img src="logos/Coca-Cola_logo.svg.png" alt="Coca-Cola">
+      <img src="logos/Unilever-Symbol.png" alt="Unilever">
+      <img src="logos/anheuser-busch-4-logo-png-transparent.png" alt="Anheuser-Busch">
+      <img src="logos/Eaton-Logo.png" alt="Eaton">
+      <img src="logos/Philips-logo-wordmark.png" alt="Philips">
+      <img src="logos/Thermo_Fisher_Scientific_logo.svg.png" alt="Thermo Fisher">
+      <img src="logos/Bridgestone_logo_wordmark.png" alt="Bridgestone">
+      <img src="logos/att-logo-transparent.png" alt="AT&T">
+      <img src="logos/Frito-Lay-Logo.png" alt="Frito-Lay">
+      <img src="logos/SC_Johnson_2018.svg.png" alt="SC Johnson">
+      <img src="logos/Western_Union_current_logo.svg.png" alt="Western Union">
+      <img src="logos/GSK-Logo-2000.png" alt="GSK">
+      <img src="logos/images.png" alt="iRobot">
+      <img src="logos/H_MasterLogo_Colour_POS_RGB.png" alt="Haleon">
+      <img src="logos/Dometic_-_logo.png" alt="Dometic">
+      <img src="logos/b91049c4-4f2d-4f87-9eb1-692758b85c45-1752006125496.png" alt="PopSockets">
+      <img src="logos/download.png" alt="Brooks">
+      <img src="logos/png-clipart-abbvie-logo-north-chicago-abbvie-inc-abbott-laboratories-pharmaceutical-industry-nyse-abbv-abbvie-logo-blue-angle.png" alt="AbbVie">
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURE COMPARISON ───────────────────────────── -->
+<section class="comparison-section" id="compare">
+  <h2>Compare Editions</h2>
+  <p class="subtitle">Every edition includes powerful statistical and ML forecasting. Here's what sets them apart.</p>
+
+  <div class="comparison-table-wrap">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>FP 100</th>
+          <th class="highlight">FP TRAC</th>
+          <th>FP Extended</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>Items per project</td>
+          <td><span class="cell-text">100</span></td>
+          <td class="highlight"><span class="cell-text">Unlimited</span></td>
+          <td><span class="cell-text">Unlimited</span></td>
+        </tr>
+        <tr>
+          <td>Statistical &amp; ML forecasting</td>
+          <td><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Overrides with audit trail</td>
+          <td><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Excel-based collaboration</td>
+          <td><span class="dash"></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Advanced reporting</td>
+          <td><span class="dash"></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Hierarchy shuffling &amp; product mapping</td>
+          <td><span class="dash"></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>FVA reports &amp; waterfall analysis</td>
+          <td><span class="dash"></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Native Forecast Pro collaboration</td>
+          <td><span class="dash"></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="dash"></span></td>
+        </tr>
+        <tr>
+          <td>Collaborator license type</td>
+          <td><span class="dash"></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="dash"></span></td>
+        </tr>
+        <tr>
+          <td>S&amp;OP process support</td>
+          <td><span class="dash"></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="dash"></span></td>
+        </tr>
+        <tr>
+          <td>Full accuracy tracking suite</td>
+          <td><span class="dash"></span></td>
+          <td class="highlight"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          <td><span class="dash"></span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────────────── -->
+<section class="faq-section">
+  <h2>Frequently asked questions</h2>
+
+  <details class="faq-item">
+    <summary>What is included with my subscription?</summary>
+    <p>All annual subscriptions include the software license, 12 months of maintenance, technical support, and all updates released during your subscription period.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Can I upgrade from FP 100 to Extended or TRAC?</summary>
+    <p>Yes. You can upgrade at any time. Contact our sales team and we'll apply your existing investment toward the higher edition.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Do you offer volume discounts?</summary>
+    <p>Yes. Both Forecast Pro Extended and TRAC offer volume pricing - the more users you add, the lower the per-user cost. Contact sales for a custom quote.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>What happens after my subscription renews?</summary>
+    <p>Your renewal covers continued access to the software, support, and all updates released during your subscription period. Contact sales for renewal pricing details.</p>
+  </details>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────── -->
+<section class="cta-banner">
+  <h2>Ready to improve your forecasts?</h2>
+  <p>Talk to our team to find the right edition for your business.</p>
+  <a href="https://www.forecastpro.com/demo/" class="btn-cta">Book a demo</a>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────── -->
+<footer class="site-footer">
+  &copy; 2026 Business Forecast Systems, Inc. All rights reserved.
+</footer>
+
+</body>
+</html>
