@@ -51,34 +51,47 @@
       align-items: center;
       justify-content: space-between;
     }
-    .logo {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-    .logo span { color: var(--fp-teal); }
-    .header-nav a {
-      color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-left: 28px;
-      transition: color 0.2s;
-    }
-    .header-nav a:hover { color: var(--white); }
-
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
+    /* ── HEADER ─────────────────────────────────────────── */
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 14px 0;
+    }
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+    }
+    .header-logo img {
+      height: 36px;
+      width: auto;
+    }
+    .header-nav a {
+      color: var(--gray-600);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover {
+      color: var(--fp-teal);
+    }
+
     /* ── HERO ───────────────────────────────────────────── */
     .hero {
       background: linear-gradient(170deg, var(--fp-dark-blue) 0%, #005a8a 100%);
       text-align: center;
-      padding: 72px 24px 90px;
+      padding: 48px 24px 70px;
       position: relative;
       overflow: hidden;
     }
@@ -529,6 +542,18 @@
   </style>
 </head>
 <body>
+
+<!-- ─── HEADER ─────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="container">
+    <a href="https://www.forecastpro.com/" class="header-logo" title="Forecast Pro Home">
+      <img src="logos/forecast pro logo.svg" alt="Forecast Pro">
+    </a>
+    <nav class="header-nav">
+      <a href="https://www.forecastpro.com/" title="Back to Forecast Pro">Home</a>
+    </nav>
+  </div>
+</header>
 
 <!-- ─── HERO ──────────────────────────────────────────── -->
 <section class="hero">
